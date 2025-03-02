@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Enhanced PiP and Video Acceleration Extension",
+  "version": "1.1",
+  "description": "Adds Picture-in-Picture functionality and playback speed controls with dynamic video detection and keyboard shortcuts.",
+  "permissions": ["scripting", "activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-pip": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P"
+      },
+      "description": "Toggle Picture-in-Picture"
+    },
+    "cycle-speed": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "Cycle video playback speed"
+    }
+  },
+  "action": {
+    "default_title": "Activate PiP / Speed Control"
+  }
+}
